@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useTokenStore } from '../stores/token'
-import Post from '../components/post.vue'
+import Post from '../components/postItem.vue'
 import api from '../utils/api'
 const store = useTokenStore()
 
@@ -62,7 +62,7 @@ const loadMore = () => {
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-gap: 15px;
   }
 }
 

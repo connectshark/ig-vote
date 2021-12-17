@@ -30,6 +30,26 @@ const api = {
           resolve(res.data)
         })
     })
+  },
+
+  getPostDetail (postId, userToken) {
+    return new Promise((resolve, reject) => {
+      fetch( import.meta.env.VITE_IG_URL + `/${postId}?fields=media_url&access_token=${userToken}`)
+        .then(r => r.json())
+        .then(res => {
+          resolve(res)
+        })
+    })
+  },
+
+  getPostChildren (postId, userToken) {
+    return new Promise((resolve, reject) => {
+      fetch( import.meta.env.VITE_IG_URL + `/${postId}/children?access_token=${userToken}`)
+        .then(r => r.json())
+        .then(res => {
+          resolve(res.data)
+        })
+    })
   }
 }
 

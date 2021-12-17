@@ -12,7 +12,7 @@ const time = dayjs(props.time).format('YYYY/MM/DD')
 </script>
 
 <template>
-<router-link :to="{ path: '/post/' + props.postId}" class="post">
+<router-link :to="{ path: '/post/' + props.postId }" class="post">
   <figure>
     <img :src="props.media_url" :alt="props.media_type">
     <figcaption>{{time}}</figcaption>
@@ -22,6 +22,13 @@ const time = dayjs(props.time).format('YYYY/MM/DD')
 
 <style scoped lang="scss">
 .post{
+  background-color: #ccc;
+  border-radius: 10px;
+  padding: 15px 0;
+  transition: background .3s;
+  &:hover{
+    background-color: #fff;
+  }
   figure{
     img{
       width: 100px;
@@ -31,6 +38,7 @@ const time = dayjs(props.time).format('YYYY/MM/DD')
     figcaption{
       font-size: 14px;
       line-height: 1.5;
+      color: #333;
     }
   }
 }
