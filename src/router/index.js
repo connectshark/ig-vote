@@ -15,6 +15,16 @@ const router = createRouter({
       component: () => import('../views/auth.vue')
     },
     {
+      path: '/me',
+      name: 'me',
+      component: () => import('../views/me.vue')
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/login.vue')
+    },
+    {
       path: '/delete',
       name: 'delete',
       component: () => import('../views/delete.vue')
