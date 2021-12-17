@@ -4,7 +4,7 @@ const url = `https://api.instagram.com/oauth/authorize?client_id=328160172224472
 
 <template>
 <div class="login">
-	<a :href="url">授權</a>
+	<a :href="url"><i class='bx bxl-instagram'></i>授權</a>
 </div>
 
 </template>

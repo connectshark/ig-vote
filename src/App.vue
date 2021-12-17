@@ -9,5 +9,9 @@
   text-align: center;
   color: #eee;
   min-height: 100vh;
+  a{
+    text-decoration: none;
+    color: #eee;
+  }
 }
 </style>

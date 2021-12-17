@@ -2,8 +2,8 @@ import { defineStore } from 'pinia'
 
 export const useTokenStore = defineStore('token',{
   state: () => ({
-    token: '',
-    userId: ''
+    token: import.meta.env.VITE_TOKEN ||  '',
+    userId: import.meta.env.VITE_TOKEN || ''
   }),
   getters: {
   },
