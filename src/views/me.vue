@@ -2,19 +2,16 @@
 import { ref } from 'vue'
 import { useTokenStore } from '../stores/token'
 import Post from '../components/post.vue'
+import api from '../utils/api'
 const store = useTokenStore()
 
-const user = ref('')
 const posts = ref([])
-fetch( import.meta.env.VITE_IG_URL + `/${store.userId}?fields=account_type,id,media_count,username&access_token=${store.token}`)
-  .then(r => r.json())
-  .then(res => user.value = res.username)
+const user = ref('')
+api.getMe(store.userId, store.token)
+  .then(name => user.value = name)
 
-fetch( import.meta.env.VITE_IG_URL + `/me/media?fields=caption,id,media_type,media_url,permalink,thumbnail_url,timestamp,username&access_token=${store.token}`)
-  .then(r => r.json())
-  .then(res => {
-    posts.value = res.data
-  })
+api.getPosts(store.token)
+  .then(post => posts.value = post )
 
 const loadMore = () => {
 

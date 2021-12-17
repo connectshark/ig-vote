@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useTokenStore } from '../stores/token'
+import api from '../utils/api'
 const store = useTokenStore()
 const route = useRoute()
 const router = useRouter()
@@ -9,8 +10,7 @@ const router = useRouter()
 const ans = ref('')
 
 const code = route.query.code
-fetch(import.meta.env.VITE_URL + `/auth?code=${code}`)
-  .then(r => r.json())
+api.auth(code)
   .then(res => {
     store.token = res.access_token,
     store.userId = res.user_id
