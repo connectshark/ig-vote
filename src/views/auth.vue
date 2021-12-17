@@ -1,14 +1,13 @@
 <script setup>
 import { ref } from 'vue'
-import axios from 'axios'
 import { useRoute } from 'vue-router'
 const route = useRoute()
+
 const ans = ref('')
-axios.post('https://fathomless-garden-95154.herokuapp.com/auth', {
-  code: route.query.code
-}).then(res => {
-  ans.value = res.data
-})
+const code = route.query.code
+fetch(import.meta.env.VITE_URL + `/auth?code=${code}`)
+  .then(r => r.json())
+  .then(res => ans.value = res)
 </script>
 
 <template>
