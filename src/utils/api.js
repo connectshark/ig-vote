@@ -1,7 +1,7 @@
 const api = {
   auth (code) {
     return new Promise((resolve, reject) => {
-      fetch(import.meta.env.VITE_URL + `/auth?code=${code}`)
+      fetch(import.meta.env.VITE_URL + `/auth/ig?code=${code}`)
         .then(r => r.json())
         .then(res => {
           resolve(res)
