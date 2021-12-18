@@ -1,7 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 import { useTokenStore } from '../stores/token'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import SwiperCore, { Navigation } from 'swiper'
+import 'swiper/css'
+import 'swiper/css/navigation'
 import api from '../utils/api'
+
+SwiperCore.use([Navigation])
 
 const store = useTokenStore()
 const props = defineProps({
@@ -23,9 +29,28 @@ api.getPostChildren(props.postId, store.token)
 <div class="post">
   <h1>{{props.postId}}</h1>
   <div class="group">
-    <figure v-for="img in imgs" :key="img.id">
-      <img :src="img.media_url" :alt="img.id">
-    </figure>
+    <swiper
+      :navigation="{
+        nextEl: '.sw-next',
+        prevEl: '.sw-prev'
+      }"
+      :slides-per-view="1"
+      :space-between="20"
+    >
+      <swiper-slide v-for="img in imgs" :key="img.id">
+        <figure>
+          <img :src="img.media_url" :alt="img.id">
+        </figure>
+      </swiper-slide>
+    </swiper>
+    <div class="navigation">
+      <span class="sw-next">
+        <i class='bx bxs-right-arrow'></i>
+      </span>
+      <span class="sw-prev">
+        <i class='bx bxs-left-arrow'></i>
+      </span>
+    </div>
   </div>
   
 </div>
@@ -34,9 +59,9 @@ api.getPostChildren(props.postId, store.token)
 <style scoped lang="scss">
 .post{
   .group{
+    width: 80%;
+    margin: auto;
     figure{
-      display: inline-block;
-      width: 33%;
       img{
         width: 100%;
         vertical-align: middle;
